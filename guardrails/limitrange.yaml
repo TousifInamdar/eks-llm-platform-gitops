@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: LimitRange
+metadata: { name: llm-defaults, namespace: llm }
+spec:
+  limits:
+    - type: Container
+      defaultRequest: { cpu: 100m, memory: 128Mi }   # used when a pod sets no requests
+      default:        { cpu: 500m, memory: 512Mi }   # used when a pod sets no limits
+      max:            { cpu: 1500m, memory: 6Gi }    # top of the CPU sweep; nothing bigger
