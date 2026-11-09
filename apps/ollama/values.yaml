@@ -1,0 +1,17 @@
+ollama:
+  models:
+    pull:
+      - qwen2.5:1.5b
+persistentVolume:
+  enabled: true
+  size: 10Gi
+  storageClass: gp3
+updateStrategy:
+  type: Recreate            # see Q2
+resources:
+  requests: { cpu: "1",   memory: 1536Mi }
+  limits:   { cpu: 1500m, memory: 2560Mi }   # 1500m = LimitRange max = top of the sweep
+extraEnv:
+  - { name: OLLAMA_NUM_PARALLEL,      value: "1" }
+  - { name: OLLAMA_MAX_LOADED_MODELS, value: "1" }
+  - { name: OLLAMA_KEEP_ALIVE,        value: "5m" }
