@@ -1,0 +1,13 @@
+ollama:
+  enabled: false          # we already run our own
+ollamaUrls:
+  - http://ollama.llm.svc.cluster.local:11434
+pipelines:
+  enabled: false
+persistence:
+  enabled: true
+  size: 2Gi
+  storageClass: gp3
+resources:
+  requests: { cpu: 250m, memory: 512Mi }
+  limits:   { cpu: "1",  memory: 2Gi }
